@@ -2,7 +2,7 @@
 
 Program AB is the reference implementation of the AIML 2.0 draft specification.
 AIML is a widely adopted standard for creating chat bots and mobile virtual assistants like ALICE, Mitsuku, English Tutor, The Professor, S.U.P.E.R. and many more.
-Forked from: [https://code.google.com/p/program-ab/](https://github.com/clojurewerkz/romulan)
+Forked from: [https://code.google.com/p/program-ab/](https://code.google.com/p/program-ab/)
 
 ## Installation
 
@@ -16,11 +16,11 @@ Add to your pom.xml:
 	</repositories>
 
 	<dependencies>
-            <dependency>
-                <groupId>com.github.haggaishachar</groupId>
-                <artifactId>program-ab</artifactId>
-                <version>v1.0</version>
-            </dependency>
+        <dependency>
+            <groupId>com.github.haggaishachar</groupId>
+            <artifactId>program-ab</artifactId>
+            <version>v1.0</version>
+        </dependency>
 	</dependencies>
 ```
 
