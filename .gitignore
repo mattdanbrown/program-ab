@@ -1,0 +1,13 @@
+.directory
+.idea
+.settings
+bin
+target
+out
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.iml

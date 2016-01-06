@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!-- File: animal.aiml -->
+<!-- Author: Dr. Richard S. Wallace -->
+<!-- Last modified: January 06, 2016 -->
+<!--  -->
+<!-- This AIML file is part of the ALICE2 0.0.5 chat bot knowledge base. -->
+<!--  -->
+<!-- The ALICE2 brain is Copyright &copy; 2016 by ALICE AI Foundation. -->
+<!--  -->
+<!-- The ALICE2 brain is released under the terms of the GNU Lesser General -->
+<!-- Public License, as published by the Free Software Foundation. -->
+<!--  -->
+<!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
+<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
+<!--  -->
+<!-- For more information see http://www.alicebot.org -->
+<category><pattern>SINGULAR <SET>ANIMALS</SET></pattern>
+<template><uniq><subj>?singular</subj><pred>hasPlural</pred><obj><star/></obj></uniq></template>
+</category>
+<category><pattern>PLURAL <SET>ANIMAL</SET></pattern>
+<template><uniq><subj><star/></subj><pred>hasPlural</pred><obj>?plural</obj></uniq></template>
+</category>
+<category><pattern><SET>ANIMALS</SET></pattern>
+<template><star/> is the plural of <uniq><subj>?subj</subj><pred>hasPlural</pred><obj><star/></obj></uniq>.</template>
+</category>
+<category><pattern>SOUND <SET>ANIMAL</SET></pattern>
+<template><star/> says <uniq><subj><star/></subj><pred>sound</pred><obj>?sound</obj></uniq>.</template>
+</category>
+<category><pattern>COLLECTIVE <SET>ANIMAL</SET></pattern>
+<template>A group of <star/> is called <uniq><subj><star/></subj><pred>collective</pred><obj>?collective</obj></uniq>.</template>
+</category>
+<category><pattern>LEGS <SET>ANIMAL</SET></pattern>
+<template>A <star/> has <uniq><subj><star/></subj><pred>legs</pred><obj>?sound</obj></uniq> legs.</template>
+</category>
+<category><pattern>WHAT DOES A <SET>ANIMAL</SET> SAY ^</pattern>
+<template><srai>SOUND <star/></srai></template>
+</category>
+<category><pattern>WHAT DO <SET>ANIMALS</SET> SAY ^</pattern>
+<template><srai>SOUND <srai>SINGULAR <star/></srai></srai></template>
+</category>
+<category><pattern>WHAT SOUND DOES # <SET>ANIMAL</SET> ^</pattern>
+<template><srai>SOUND <star index="2"/></srai></template>
+</category>
+<category><pattern>WHAT SOUND DO # <SET>ANIMAL</SET> ^</pattern>
+<template><srai>SOUND <srai>SINGULAR <star index="2"/></srai></srai></template>
+</category>
+<category><pattern>HOW DOES # <SET>ANIMAL</SET> ^</pattern>
+<template><srai>SOUND <star index="2"/></srai></template>
+</category>
+<category><pattern>HOW MANY LEGS ^ <SET>ANIMAL</SET> #</pattern>
+<template><srai>LEGS <star index="2"/></srai></template>
+</category>
+<category><pattern>HOW MANY LEGS ^ <SET>ANIMALS</SET> #</pattern>
+<template><srai>LEGS <srai>SINGULAR <star index="2"/></srai></srai></template>
+</category>
+<category><pattern>HOW MANY LEGS # <SET>NUMBER</SET> <SET>ANIMALS</SET> # <SET>NUMBER</SET> <SET>ANIMALS</SET> ^</pattern>
+<template><think>
+<set var="number1"><star index="2"/></set>
+<set var="animal1"><srai>SINGULAR <star index="3"/></srai></set>
+<set var="legs1"><uniq><subj><get var="animal1"/></subj><pred>legs</pred><obj>?legs1</obj></uniq></set>
+<set var="number2"><star index="5"/></set>
+<set var="animal2"><srai>SINGULAR <star index="6"/></srai></set>
+<set var="legs2"><uniq><subj><get var="animal2"/></subj><pred>legs</pred><obj>?legs2</obj></uniq></set>
+<set var="formula"><get var="number1"/>*<get var="legs1"/>+<get var="number2"/>*<get var="legs2"/></set>
+</think>
+<srai>ROUND <srai>WHAT IS <get var="formula"/></srai></srai> legs.</template>
+</category>
+<category><pattern>HOW MANY LEGS # <SET>NUMBER</SET> <SET>ANIMALS</SET> ^</pattern>
+<template><think>
+<set var="number1"><star index="2"/></set>
+<set var="animal1"><srai>SINGULAR <star index="3"/></srai></set>
+<set var="legs1"><uniq><subj><get var="animal1"/></subj><pred>legs</pred><obj>?legs1</obj></uniq></set>
+<set var="formula"><get var="number1"/>*<get var="legs1"/></set>
+</think>
+<srai>ROUND <srai>WHAT IS <get var="formula"/></srai></srai> legs.</template>
+</category>
+<category><pattern>_ 1 <SET>ANIMAL</SET> *</pattern>
+<template><srai><star/> 1 <srai>PLURAL <star index="2"/></srai> <star index="3"/></srai></template>
+</category>
+<category><pattern>_ 1 <SET>ANIMAL</SET></pattern>
+<template><srai><star/> 1 <srai>PLURAL <star index="2"/></srai></srai></template>
+</category>
+</aiml>

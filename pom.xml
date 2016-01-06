@@ -1,0 +1,89 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.alicebot</groupId>
+	<artifactId>program-ab</artifactId>
+	<version>2.0</version>
+	<name>Program AB</name>
+	<description>
+        Program AB is the reference implementation of the AIML 2.0 draft specification.
+        AIML is a widely adopted standard for creating chat bots and mobile virtual assistants like ALICE, Mitsuku, English Tutor, The Professor, S.U.P.E.R. and many more.
+        Forked from: https://code.google.com/p/program-ab/
+    </description>
+
+    <properties>
+		<slf4j.version>1.7.5</slf4j.version>
+		<httpclient.version>4.2.5</httpclient.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>soluvas-public-thirdparty</id>
+			<url>http://nexus.bippo.co.id/nexus/content/repositories/soluvas-public-thirdparty/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<dependencies>
+	    <dependency>
+	    	<groupId>org.slf4j</groupId>
+	    	<artifactId>slf4j-api</artifactId>
+	    	<version>${slf4j.version}</version>
+	    </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+	    <dependency>
+	    	<groupId>org.apache.httpcomponents</groupId>
+	    	<artifactId>httpclient</artifactId>
+	    	<version>${httpclient.version}</version>
+	    </dependency>
+	    <dependency>
+	    	<groupId>joda-time</groupId>
+	    	<artifactId>joda-time</artifactId>
+	    	<version>2.3</version>
+	    </dependency>
+	    <dependency>
+	    	<groupId>org.json</groupId>
+	    	<artifactId>json</artifactId>
+	    	<version>20090211</version>
+	    </dependency>
+	    <dependency>
+	    	<groupId>net.reduls.sanmoku</groupId>
+	    	<artifactId>sanmoku</artifactId>
+	    	<version>0.0.5</version>
+	    </dependency>
+	    <dependency>
+	    	<groupId>net.reduls.sanmoku</groupId>
+	    	<artifactId>sanmoku-feature-ex</artifactId>
+	    	<version>0.0.1</version>
+	    </dependency>
+	</dependencies>
+
+	<build>
+        <resources>
+            <resource>
+                <directory>bots</directory>
+                <targetPath>bots</targetPath>
+            </resource>
+        </resources>
+
+        <plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+
+</project>
